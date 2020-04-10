@@ -1,0 +1,20 @@
+import numpy as np
+import matplotlib.pylot as plt
+from sklearn.dataset import make_blobs
+from sklearn.cluster import KMeans
+
+#creating datasets
+
+data = make_blots(n_samples=200, n_feature=2, centers=4, cluster_std=1.0, random_state=50)
+points=data[0]
+#creating kmeans object
+km=KMeans(n_cluster=4)
+#fitting the kmeans object to data
+km.fit(points)
+print(km.cluster_centers_)
+y_km=km.fit_predicted(points)
+#to find the scatter plot of the clustering
+plt.scatter(points[y_km ==0,0], points[y_km == 0,1], s=100, c='red')
+plt.scatter(points[y_km ==1,0], points[y_km == 1,1], s=100, c='green')
+plt.scatter(points[y_km ==2,0], points[y_km == 2,1], s=100, c='blue')
+plt.scatter(points[y_km ==3,0], points[y_km == 3,1], s=100, c='black')
